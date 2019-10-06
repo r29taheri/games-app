@@ -1,0 +1,28 @@
+<div class="parent" *ngIf="game && !failed">
+    <div class="back-btn" routerLink="/categories">
+        <img src="./../../../assets/img/back.svg" alt="">
+    </div>
+    <div class="background-box" [ngStyle]="{'background-image': 'url('+game.thumbnails['600x280']+')'}">
+    </div>
+    <div class="game-detail-container">
+        <div class="game-detail-title">
+            {{game.name}}
+        </div>
+        <div class="game-play-container">
+            <img src="./../../../assets/img/play.svg" alt="">
+        </div>
+        <div class="play-now">
+            Play Now
+        </div>
+        <div class="game-detail-description" [innerHtml]="game.meta.description_long">
+            {{game.description}}
+        </div>
+    </div>
+</div>
+<app-loading *ngIf="!game && !failed">
+    <div class="text-center">
+        <p>Wait for it...</p>
+    </div>
+</app-loading>
+<app-not-found *ngIf="!game && failed">
+</app-not-found>

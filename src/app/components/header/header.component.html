@@ -1,0 +1,28 @@
+<div class="parent" (mousemove)="handleMouseMove($event)" *ngIf="!showLoading; else loading">
+    <div class="child">
+        <div class="center-circle" [ngStyle]="{'transform': centerCircleRotateLeft}"></div>
+        <span [style.transform]="leftTransform">"Live your passion"</span>
+        <div class="cat-slide-container" [routerLink]="['/categories', category.slug]" [style.width]="catOuterContainerEl">
+            <span [ngClass]="{'fade-up': changeCat}">{{category.name}}</span>
+        </div>
+    </div>
+    <div class="child">
+        <span [style.transform]="rightTransform">"Live your passion"</span>
+        <div class="cat-slide-container" [style.width]="catOuterContainerEl">
+            <div class="cat-inner-container" [routerLink]="['/categories', category.slug]" [style.width]="catOuterContainerEl">
+                <span [ngClass]="{'fade-down': changeCat}">{{category.name}}</span>
+            </div>
+            <p [routerLink]="['/categories']">See all categories
+                <img src="./../../../assets/img/arrow.svg" alt="">
+            </p>
+        </div>
+    </div>
+</div>
+<ng-template #loading>
+    <app-loading >
+        <div class="text-center">
+            <p>Wait for it...</p>
+            <p>It's gonna be <strong>legendary</strong></p>
+        </div>
+    </app-loading>
+</ng-template>

@@ -1,0 +1,25 @@
+<div class="container-fluid" *ngIf="gamesList; else loading">
+    <div class="row">
+        <div class="col-12">
+            <div class="input-group mb-5">
+                <input type="text" class="form-control" placeholder="Search" [(ngModel)]="search">
+            </div>
+        </div>
+        <div class="col-md-4" *ngFor="let item of gamesList | search: search">
+            <div class="card mb-5">
+                <img [src]="item.thumbnail" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">{{item.name}}</h5>
+                    <a class="btn btn-primary" [routerLink]="['/games', item.id]">Play</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<ng-template #loading>
+    <app-loading>
+        <div class="text-center">
+            <p>Wait for it...</p>
+        </div>
+    </app-loading>
+</ng-template>
