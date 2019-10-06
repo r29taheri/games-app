@@ -12,7 +12,7 @@ export class HeaderComponent implements OnInit {
   centerCircleRotateLeft: string;
   centerCircleRotateRight: string;
   categories;
-  category: string = 'waiting';
+  category;
   changeCat: boolean = false;
   showLoading: boolean = true;
   catOuterContainerEl: string;
